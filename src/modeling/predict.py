@@ -1,21 +1,17 @@
-"""
-Code to run model inference with trained models
-"""
+# src/modeling/predict.py
 
-from pathlib import Path
-
-from src.config import MODELS_DIR, PROCESSED_DATA_DIR
+import numpy as np
 
 
-def main(
-    # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
-    features_path: Path = PROCESSED_DATA_DIR / "test_features.csv",
-    model_path: Path = MODELS_DIR / "model.pkl",
-    predictions_path: Path = PROCESSED_DATA_DIR / "test_predictions.csv",
-    # -----------------------------------------
-):
-    pass
+def predict(model, X):
+    return model.predict(X)
 
 
-if __name__ == "__main__":
-    main()
+def counterfactual_gender_gap(model, X):
+    X_m = X.copy()
+    X_f = X.copy()
+
+    X_m[:, 1] = 1
+    X_f[:, 1] = 0
+
+    return model.predict(X_m) - model.predict(X_f)
