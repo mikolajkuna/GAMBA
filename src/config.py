@@ -67,6 +67,20 @@ INTERACTIONS = [
     {"features": ("gender", "job_level"), "lam": 10}
 ]
 
+EDUCATION_MAP = {
+    "High School": 1,
+    "Bachelor": 2,
+    "Master": 3,
+    "PhD": 4
+}
+
+JOB_LEVEL_MAP = {
+    "Junior": 1,
+    "Mid": 2,
+    "Senior": 3,
+    "Manager": 4
+}
+
 # =====================================================
 # TRAINING
 # =====================================================
