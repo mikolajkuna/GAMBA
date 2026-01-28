@@ -1,17 +1,9 @@
 # src/features.py
 
-import numpy as np
+from src.config import FEATURES, TARGET, GENDER_MAP, MIN_WAGE_PLN, DISTANCE_THRESHOLD_KM, EDUCATION_MAP, JOB_LEVEL_MAP
 import pandas as pd
-
-from src.config import (
-    FEATURES,
-    TARGET,
-    GENDER_MAP,
-    MIN_WAGE_PLN,
-    DISTANCE_THRESHOLD_KM,
-    EDUCATION_MAP,
-    JOB_LEVEL_MAP
-)
+import numpy as np
+from sklearn.utils.class_weight import compute_class_weight
 
 # =====================================================
 # === PREPROCESSING ==================================
@@ -70,3 +62,25 @@ def preprocess_and_save(df: pd.DataFrame, path):
     processed = preprocess(df)
     processed.to_csv(path, index=False)
     return processed
+
+
+# =====================================================
+# === OBLICZANIE WAGI PRÓBEK =========================
+# =====================================================
+def compute_sample_weights(df: pd.DataFrame):
+    """
+    Compute the class weights for the gender feature (balanced).
+    """
+    # Użyj 'compute_class_weight' do obliczenia wag dla 'gender'
+    gender_classes = df["gender"].astype(int).values  # upewnij się, że to są liczby 0/1
+    class_weights = compute_class_weight(
+        class_weight="balanced", 
+        classes=np.unique(gender_classes),  # klasy: 0 i 1
+        y=gender_classes
+    )
+
+    # Mapowanie wag do oryginalnego dataframe'u
+    weight_dict = dict(zip(np.unique(gender_classes), class_weights))
+    df["sample_weight"] = df["gender"].map(weight_dict)
+
+    return df
