@@ -1,8 +1,5 @@
 # GAMBA – Generalized Additive Model for Bias Analysis
 
-[![Flake8 Linting](https://github.com/Dnafivuq/golem_template/actions/workflows/lint.yml/badge.svg)](https://github.com/Dnafivuq/golem_template/actions/workflows/lint.yml)
-[![Pytest](https://github.com/Dnafivuq/golem_template/actions/workflows/test.yml/badge.svg)](https://github.com/Dnafivuq/golem_template/actions/workflows/test.yml) <a target="_blank" href="https://cookiecutter-data-science.drivendata.org/"> <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" /> </a>
-
 This repository implements **GAMBA** (Generalized Additive Model for Bias Analysis), a framework to analyze and model salary data with counterfactual gender adjustments. It demonstrates **gender pay gap analysis**, predictive modeling using **GAMs**, and visualization of effects across features like job level and number of children.
 
 It is built on the [cookiecutter data science template](https://github.com/drivendataorg/cookiecutter-data-science), providing a clean, reproducible structure and CI integration with **pytest** and **flake8**.
@@ -90,24 +87,6 @@ python3 -m venv .venv          # Create virtual environment
 source .venv/bin/activate      # Activate environment
 pip install -r requirements.txt  # Install all dependencies
 ```
-
-### Using `.env` (optional)
-
-You can define constants or secrets (e.g., API keys) in a `.env` file.
-
-```bash
-API_KEY="YOUR_KEY_HERE"
-```
-
-```python
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-api_key = os.getenv("API_KEY")
-```
-
----
 
 ## GAMBA Highlights
 
