@@ -1,21 +1,8 @@
-"""
-Code to download or generate data
-"""
-
-from pathlib import Path
-
-from src.config import PROCESSED_DATA_DIR, RAW_DATA_DIR
+# src/dataset.py
+import pandas as pd
 
 
-def main(
-    # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
-    input_path: Path = RAW_DATA_DIR / "dataset.csv",
-    output_path: Path = PROCESSED_DATA_DIR / "dataset.csv"
-    # ----------------------------------------------
-):
-
-    pass
-
-
-if __name__ == "__main__":
-    main()
+def load_raw_salary(path):
+    with open(path, "r", encoding="utf-8") as f:
+        sep = ";" if ";" in f.readline() else ","
+    return pd.read_csv(path, sep=sep)
