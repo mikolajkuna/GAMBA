@@ -2,7 +2,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-
+from src.config import JOB_MAP, FIGURES_DIR
 
 def gap_by_job_level(X, gap, job_map):
     levels = sorted(np.unique(X[:, 3]))
