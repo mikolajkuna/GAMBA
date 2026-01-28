@@ -3,11 +3,7 @@
 import numpy as np
 
 
-FEATURES = [
-    "age", "gender", "education_level", "job_level",
-    "experience_years", "distance_from_home", "absence", "child"
-]
-
+from src.config import FEATURES, TARGET, GENDER_MAP, MIN_WAGE_PLN, DISTANCE_THRESHOLD_KM
 
 def preprocess(df):
     df = df.copy()
