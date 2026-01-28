@@ -2,7 +2,6 @@
 
 from pygam import LinearGAM, s, f, te
 from sklearn.utils import compute_sample_weight
-from src.config import INTERACTIONS, CLASS_WEIGHT_MODE
 
 def build_gamba():
     return LinearGAM(
