@@ -1,21 +1,16 @@
-"""
-Code to create visualizations
-"""
+# src/plots.py
 
-from pathlib import Path
-
-from src.config import PROCESSED_DATA_DIR, FIGURES_DIR
+import matplotlib.pyplot as plt
+import numpy as np
 
 
-def main(
-    # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
-    input_path: Path = PROCESSED_DATA_DIR / "dataset.csv",
-    output_path: Path = FIGURES_DIR / "plot.png",
-    # -----------------------------------------
-):
+def gap_by_job_level(X, gap, job_map):
+    levels = sorted(np.unique(X[:, 3]))
+    mean_gaps = [gap[X[:, 3] == lvl].mean() for lvl in levels]
 
-    pass
-
-
-if __name__ == "__main__":
-    main()
+    plt.figure(figsize=(7, 5))
+    plt.bar([job_map[int(l)] for l in levels], mean_gaps)
+    plt.axhline(0, color="red", linestyle="--")
+    plt.ylabel("Mean Gender Pay Gap (PLN)")
+    plt.title("Gender Pay Gap by Job Level")
+    plt.show()
