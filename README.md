@@ -23,6 +23,17 @@ The full file structure is described below.
 
 ---
 
+## Data
+
+All datasets in this repository are **synthetic** and generated for reproducibility and privacy reasons. 
+They are based on realistic distributions from the original salary data but contain **no real individual records**. 
+
+The synthetic data can be regenerated using:
+
+```bash
+python3 -m src.dataset --generate-synthetic --seed 20240317
+
+
 ### How to run the code
 
 ```bash
