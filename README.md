@@ -1,6 +1,6 @@
-# GAMBA – Generalized Additive Model for Bias Analysis
+# GAMBA – Generalized Additive Model and Bayesian Analysis
 
-This repository implements **GAMBA** (Generalized Additive Model for Bias Analysis), a framework to analyze and model salary data with counterfactual gender adjustments. It demonstrates **gender pay gap analysis**, predictive modeling using **GAMs**, and visualization of effects across features like job level and number of children.
+This repository implements **GAMBA** (Generalized Additive Model and Bayesian Analysis), a framework to analyze and model salary data with counterfactual gender adjustments. It demonstrates **gender pay gap analysis**, predictive modeling using **GAMs**, **Bayes**, and visualization of effects across features like job level and number of children.
 
 It is built on the [cookiecutter data science template](https://github.com/drivendataorg/cookiecutter-data-science), providing a clean, reproducible structure and CI integration with **pytest** and **flake8**.
 
