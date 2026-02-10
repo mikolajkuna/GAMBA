@@ -99,6 +99,7 @@ pip install -r requirements.txt  # Install all dependencies
 
 * **Counterfactual Gender Pay Gap Analysis**: Predict salaries if all employees were male/female.
 * **Flexible GAM specification**: monotonicity constraints on age, experience, job level, absence, etc.
+* **Bayesian modeling**: probabilistic inference and credible intervals for predictions.  
 * **Feature-specific insights**: visualizations for job level, number of children, and combined interactions (gender × job level).
 * **Weighted modeling**: balances gender distribution in training with sample weights.
 * **Reproducible pipeline**: fully modular `dataset -> features -> modeling -> plots`.
