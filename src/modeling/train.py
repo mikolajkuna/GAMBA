@@ -25,8 +25,8 @@ except ImportError:
 # === LOAD & PREPROCESS DATA =========================
 # =====================================================
 def load_csv(path):
-    with open(path, "r", encoding="utf-8") as f:
-        sep = ";" if ";" in f.readline() else ","
+    with open(path, "r", encoding="utf-8") as fh:
+        sep = ";" if ";" in fh.readline() else ","
     return pd.read_csv(path, sep=sep)
 
 def preprocess(df: pd.DataFrame) -> pd.DataFrame:
@@ -371,7 +371,7 @@ def train_bayesian_gam_pymc(synthetic_path: str, n_samples=2000, n_tune=1000, n_
         
         # Likelihood
         sigma = pm.HalfNormal("sigma", sigma=1000)
-        likelihood = pm.Normal("y", mu=mu, sigma=sigma, observed=y)
+        pm.Normal("y", mu=mu, sigma=sigma, observed=y)
         
         # Sampling
         print(f"\nSampling {n_samples} samples with {n_tune} tuning steps across {n_chains} chains...")
@@ -496,7 +496,7 @@ def train_bayesian_gam_pymc(synthetic_path: str, n_samples=2000, n_tune=1000, n_
     beta_gender_child_posterior = trace.posterior['beta_gender_child'].values.reshape(-1)
     beta_gender_child_hdi = az.hdi(beta_gender_child_posterior, hdi_prob=0.94)
     
-    print(f"beta_gender_child (interaction effect):")
+    print("beta_gender_child (interaction effect):")
     print(f"  Mean: {beta_gender_child_posterior.mean():,.0f} PLN")
     print(f"  Median: {np.median(beta_gender_child_posterior):,.0f} PLN")
     print(f"  94% HDI: [{beta_gender_child_hdi[0]:,.0f}, {beta_gender_child_hdi[1]:,.0f}] PLN")
@@ -506,10 +506,10 @@ def train_bayesian_gam_pymc(synthetic_path: str, n_samples=2000, n_tune=1000, n_
     print("\nInterpretation:")
     if beta_gender_child_posterior.mean() > 0:
         print(f"  • Men with children earn MORE (+{beta_gender_child_posterior.mean():.0f} PLN per child)")
-        print(f"  • This suggests a 'fatherhood bonus'")
+        print("  • This suggests a 'fatherhood bonus'")
     else:
         print(f"  • Men with children earn LESS ({beta_gender_child_posterior.mean():.0f} PLN per child)")
-        print(f"  • This is unexpected - fatherhood typically increases earnings")
+        print("  • This is unexpected - fatherhood typically increases earnings")
     
     # Compute gap stratified by children
     print("\n" + "="*60)

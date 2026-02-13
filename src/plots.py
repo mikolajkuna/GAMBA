@@ -1,13 +1,13 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from src.config import JOB_MAP, FIGURES_DIR
+from src.config import JOB_MAP
 
 def gap_by_job_level(X, gap, job_map=JOB_MAP):
     levels = sorted(np.unique(X[:, 3]))
     mean_gaps = [gap[X[:, 3] == lvl].mean() for lvl in levels]
 
     plt.figure(figsize=(7, 5))
-    plt.bar([job_map[int(l)] for l in levels], mean_gaps)
+    plt.bar([job_map[int(lvl)] for lvl in levels], mean_gaps)
     plt.axhline(0, color="red", linestyle="--")
     plt.ylabel("Mean Gender Pay Gap (PLN)")
     plt.title("Gender Pay Gap by Job Level")

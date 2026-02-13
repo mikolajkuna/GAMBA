@@ -72,6 +72,7 @@ def compute_sample_weights(df: pd.DataFrame):
     Compute the class weights for the gender feature (balanced).
     """
     # Użyj 'compute_class_weight' do obliczenia wag dla 'gender'
+    df = df.copy()
     gender_classes = df["gender"].astype(int).values  # upewnij się, że to są liczby 0/1
     class_weights = compute_class_weight(
         class_weight="balanced", 
