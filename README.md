@@ -13,14 +13,13 @@ This repository accompanies the paper:
 
 ### Code and Files Structure
 
-The repository follows a clear modular design. Each step – from data ingestion to feature engineering, model training, prediction, and visualization – has its own module under `src/`.
+The repository follows a clear modular design. Each step – from data ingestion to feature engineering, model training, and visualization – has its own module under `src/`.
 
 * `dataset.py` – loading raw CSV data
 * `features.py` – preprocessing and feature creation
-* `modeling/train.py` – train the GAMBA model
-* `modeling/predict.py` – generate predictions with trained models
-* `plots.py` – visualizations (gender pay gap, counterfactual analysis)
-* `config.py` – central place for constants, paths, feature lists, and GAM specifications
+* `modeling/train.py` – train all GAMBA model variants (GCV Default, Grid Search GCV, Grid Search AIC, Bayesian PyMC)
+* `plots.py` – visualizations (gender pay gap, counterfactual analysis, motherhood penalty)
+* `config.py` – central place for constants, paths, feature lists, MCMC parameters, and GAM specifications
 
 ---
 
@@ -67,11 +66,8 @@ python3 -m src.dataset
 # Preprocess and create features
 python3 -m src.features
 
-# Train GAMBA model
+# Train all GAMBA models (GCV Default, Grid Search GCV, Grid Search AIC, Bayesian PyMC)
 python3 -m src.modeling.train
-
-# Predict using trained model
-python3 -m src.modeling.predict
 ```
 
 Notebooks in `notebooks/` allow interactive exploration and plotting.
